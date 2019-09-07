@@ -1,0 +1,17 @@
+{
+  "name": "streamflow",
+  "version": "0.1.0",
+  "description": "A YouTube Video to MP4/MP3 converter",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "ytdl-core": "^0.29.6"
+  }
+}
