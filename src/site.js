@@ -2,7 +2,8 @@ const url = document.querySelector('.yturl')
 const button = document.querySelector('.conv')
 const select = document.querySelector('.mimetype-selector')
 
-const remote = 'localhost:35100'
+const port = 80
+const remote = `localhost:${port}`
 
 button.addEventListener('click', function () {
     if (url.value == '') return alert("An error has occoured: No input")
@@ -20,6 +21,6 @@ function download(URL, mimeType) {
 // TODO: have a small box with info about the video selected (request data on node.js backend and then display)
 function returnInfo(URL) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "http://" + remote + "/info", true)
+    xhttp.open("POST", `http://${remote}/info`, true)
     xhttp.send("");
 }
