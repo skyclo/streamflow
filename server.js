@@ -5,7 +5,7 @@ const c = require('chalk')
 
 const app = express()
 
-const port = env.port
+const port = process.env.PORT || 2761
 
 var errorCount = 0
 
