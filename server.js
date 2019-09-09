@@ -5,7 +5,7 @@ const c = require('chalk')
 
 const app = express()
 
-const port = 80
+const port = env.port
 
 var errorCount = 0
 
@@ -13,7 +13,7 @@ app.use(cors())
 
 app.use(express.static(__dirname + '/src'));
 
-app.listen(80, () => {
+app.listen(port, () => {
 	console.log('Streamflow DL Backend Online at port ' + port)
 })
 
