@@ -3,7 +3,7 @@ const button = document.querySelector('.conv')
 const select = document.querySelector('.mimetype-selector')
 
 const port = 29775
-const remote = `localhost:${port}`
+const remote = `streamflow.herokuapp.com`
 
 button.addEventListener('click', function () {
     if (url.value == '') return alert("An error has occoured: No input")
@@ -15,7 +15,7 @@ button.addEventListener('click', function () {
 })
 
 function download(URL, mimeType) {
-    window.location.href = `/dl?URL=${URL}&mimetype=${mimeType}`
+    window.location.href = `http://${remote}/dl?URL=${URL}&mimetype=${mimeType}`
 }
 
 // TODO: have a small box with info about the video selected (request data on node.js backend and then display)
