@@ -15,7 +15,7 @@ button.addEventListener('click', function () {
 })
 
 function download(URL, mimeType) {
-    window.location.href = `http://${remote}/dl?URL=${URL}&mimetype=${mimeType}`
+    window.location.href = `/dl?URL=${URL}&mimetype=${mimeType}`
 }
 
 // TODO: have a small box with info about the video selected (request data on node.js backend and then display)
