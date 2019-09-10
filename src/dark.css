@@ -28,6 +28,46 @@ p {
     font-size: 12px;
 }
 
+a {
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition: color 0.300s;
+    -moz-transition: color 0.300s;
+    transition: color 0.300s;
+
+    text-decoration: none;
+    color: #626262;
+    font-weight: bold;
+    margin: 20px;
+
+}
+
+a:hover {
+    color: #562390;
+    
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background: #121212ff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #2E66AA; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #204775; 
+}
+
 .heading {
     font-family: 'Muli', sans-serif;
     font-weight: bold;
@@ -138,12 +178,15 @@ p {
     -webkit-transition-timing-function: ease-in-out;
     -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
+
     -webkit-transition: background 0.300s, border 0.300s, color 0.300s;
     -moz-transition: background 0.300s, border 0.300s, color 0.300s;
     transition: background 0.300s, border 0.300s, color 0.300s;
+
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none; 
+
     text-align: center;
     width: 300px;
     height: 40px;
@@ -154,15 +197,86 @@ p {
     padding: 6px 6px 6px 10px;
 }
 
-.mimetype-selector:hover {
-    border:2px solid #562390;
-    background: #562390;
+
+#vidinfo {
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+
+    -webkit-transition: display 0.300s;
+    -moz-transition: display 0.300s;
+    transition: display 0.300s;
+
+    /* display: inline-block; */
+    /* display: none; */
+    width: 30%;
+    height: auto;
+    background: #121212;
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.vidimg {
+    width: 45%;
+    display: block;
+    float: left;
+    text-align: center;
+}
+
+.vidimg img{
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.vidmeta {
+    margin-left: 20px;
+    width: 45%;
+    display: block;
+    float: left;
+}
+
+.title {
+    text-align: left;
+    display: block;
+    color: #f5f5f5;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0px 0px 0px;
+    padding: 6px 6px 6px 6px;
+}
+
+.info_lower {
+    text-align: left;
+    color: #626262;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0px 0px 0px 0px;
+    padding: 6px 6px 6px 6px;
+}
+
+.author, .published_date {
+    margin: inherit;
+    display: inline;
+}
+
+.duration {
+    position: absolute;
+    background: #212121b7;
+    color: #f5f5f5;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: right;
+    padding: 2.5px 3.5px 2.5px 3.5px;
+    margin: 5px 0px 3px 5px;
+    border-radius: 4px 4px 4px 4px;
 }
 
 .info {
     left: 1;
     bottom: 1;
     text-align: center;
+    margin-bottom: 200px;
 }
 
 .info p {
@@ -188,42 +302,26 @@ p {
     text-align: right;
 }
 
-a {
+.hide {
     -webkit-transition-timing-function: ease-in-out;
     -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
-    -webkit-transition: color 0.300s;
-    -moz-transition: color 0.300s;
-    transition: color 0.300s;
 
-    text-decoration: none;
-    color: #626262;
-    font-weight: bold;
-    margin: 20px;
+    -webkit-transition: display 0.300s;
+    -moz-transition: display 0.300s;
+    transition: display 0.300s;
 
+    display: none; 
 }
 
-a:hover {
-    color: #562390;
-    
-}
+.show {
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
 
-::-webkit-scrollbar {
-    width: 10px;
-}
+    -webkit-transition: display 0.300s;
+    -moz-transition: display 0.300s;
+    transition: display 0.300s;
 
-::-webkit-scrollbar-track {
-    border-radius: 0px;
-    background: #121212ff;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #2E66AA; 
-    border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #204775; 
+    display: inline-block;
 }

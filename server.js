@@ -5,7 +5,7 @@ const c = require('chalk')
 
 const app = express()
 
-const port = process.env.PORT || 29775
+const port = process.env.PORT || 80
 
 var errorCount = 0
 
@@ -17,23 +17,24 @@ app.listen(port, () => {
 	console.log('Streamflow DL Backend Online at port ' + port)
 })
 
-app.get('/dl', (req,res) => {
+// TODO: API Support
+
+app.get('/dl', async (req,res) => {
     var url = req.query.URL
     var type = req.query.mimetype
-    switch (type) {
-        case "mp4": {
-            res.header('Content-Disposition', 'attachment; filename="video.mp4"')
-            ytdl(url, {format: 'mp4'}).pipe(res)
-            txOK("DL-ENDPOINT [MP4]")
-            break
-        }
-        case "mp3": {
-            res.header('Content-Disposition', 'attachment; filename="audio.mp3"')
-            ytdl(url, {filter:"audioonly", format:"mp3"}).pipe(res)
-            txOK("DL-ENDPOINT [MP3]")
-            break
-        }
-    }
+    var info = await ytdl.getInfo(url)
+
+    res.header('Content-Disposition', 'attachment; filename="' + info.title + '.' + type + '"')
+    ytdl(url, {format: type}).pipe(res)
+    txOK("DL-ENDPOINT " + type)
+})
+
+app.get('/info', async(req, res) => {
+    var url = req.headers.id
+
+    var info = await ytdl.getInfo(url)
+    res.status(200)
+    res.send({'title': info.title, 'author': info.author.name, 'upload': info.published, 'duration': info.length_seconds, 'thumbnail': info.player_response.videoDetails.thumbnail.thumbnails[info.player_response.videoDetails.thumbnail.thumbnails.length-1].url.substring(0, info.player_response.videoDetails.thumbnail.thumbnails[info.player_response.videoDetails.thumbnail.thumbnails.length-1].url.indexOf('.jpg') + '.jpg'.length)})
 })
 
 app.get('/', (req, res) =>{
@@ -59,26 +60,6 @@ app.get('/about', (req, res) =>{
     res.status(200).sendFile("./about.html", {root:"./src"})
     txOK("about.html")
 })
-
-/* app.get('/index.js', (req, res) =>{
-    res.set('Content-Type', 'text/javascript')
-    res.status(200).sendFile("./index.js", {root:"./src"})
-})
-
-app.get('/dark.css', (req, res) =>{
-    res.set('Content-Type', 'text/css')
-    res.status(200).sendFile("./dark.css", {root:"./src"})
-})
-
-app.get('/l2banner-1920.png', (req, res) =>{
-    res.set('Content-Type', 'image/png')
-    res.status(200).sendFile("./l2banner-1920.png", {root:"./src"})
-})
-
-app.get('/favicon.ico', (req, res) =>{
-    res.set('Content-Type', 'image/x-icon')
-    res.status(200).sendFile("./favicon.ico", {root:"./src"})
-}) */
 
 function txOK(s) {
     var t = new Date().toISOString()

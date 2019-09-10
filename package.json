@@ -1,6 +1,6 @@
 {
   "name": "streamflow",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "A YouTube Video to MP4/MP3 converter",
   "main": "server.js",
   "scripts": {
